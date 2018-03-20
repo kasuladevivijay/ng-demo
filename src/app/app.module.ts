@@ -10,6 +10,7 @@ import { CoursesService } from './courses/courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors/authors.service';
 import { SummaryPipe } from './summary.pipe';
+import { LikeComponent } from './like/like.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SummaryPipe } from './summary.pipe';
     AppComponent,
     CoursesComponent,
     AuthorsComponent,
-    SummaryPipe
+    SummaryPipe,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
