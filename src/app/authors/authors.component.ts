@@ -12,5 +12,13 @@ export class AuthorsComponent {
   constructor(service: AuthorsService) {
     this.authors = service.getAuthors();
   }
+  onClick($event) {
+    // to Stop event propagation we use the below statement
+    $event.stopPropagation();
+    console.log('Button Clicked', $event);
+  }
+  onDivClick() {
+    console.log('Div was clicked');
+  }
 
 }

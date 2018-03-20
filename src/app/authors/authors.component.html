@@ -6,3 +6,8 @@
 </ul>
 <button class="btn btn-primary" [class.active]="isActive" [style.borderColor]="isActive ? 'yellow': 'red'">
   Add Author</button>
+<!-- event binding using () for events raised from DOM like click, keypress etc..-->
+<div (click)="onDivClick()">
+  <!-- Event Bubbling - events bubbles up on the DOM tree -->
+  <button class="btn btn-secondary" (click)="onClick($event)">Save Author</button>
+</div>
