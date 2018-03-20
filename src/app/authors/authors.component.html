@@ -15,3 +15,7 @@
 <!-- event filtering in angular using . operator  -->
 <!-- Template Variables ex #email -->
 <input type="email" #email (keyup.enter)="onKeyUp(email.value)"/>
+
+<!-- Two Way binding -->
+<!-- Using [(ngModel)] directive -->
+<input type="email" [(ngModel)]="email" (keyup.enter)="keyUp()" />

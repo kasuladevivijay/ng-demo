@@ -9,6 +9,8 @@ import { AuthorsService } from './authors.service';
 export class AuthorsComponent {
   authors;
   isActive = false;
+
+  email = 'me@example.com';
   constructor(service: AuthorsService) {
     this.authors = service.getAuthors();
   }
@@ -31,6 +33,9 @@ export class AuthorsComponent {
     // console.log('Enter was pressed');
     console.log(email);
 
+  }
+  keyUp() {
+    console.log(this.email);
   }
 
 }
