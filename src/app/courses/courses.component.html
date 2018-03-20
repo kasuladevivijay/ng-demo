@@ -2,3 +2,10 @@
 <ul>
   <li *ngFor="let course of courses">{{course}}</li>
 </ul>
+<br>
+<!-- Pipes -->
+{{ course.title | uppercase | lowercase }}<br/>
+{{ course.rating | number: "1.1-1"}}<br/> <!-- decimal -->
+{{ course.students | number}}<br/>
+{{ course.price | currency:'INR':'code'}}<br/> <!-- default is USD , third parameter values are code, symbol-->
+{{ course.releaseDate | date:'medium'}}<br/>

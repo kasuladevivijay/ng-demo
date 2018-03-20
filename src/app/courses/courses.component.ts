@@ -9,6 +9,13 @@ import { CoursesService } from './courses.service';
 export class CoursesComponent  {
   title = 'List of Courses';
   courses;
+  course = {
+    title: 'Angular-Complete',
+    rating: 4.9274,
+    students: 92400,
+    price: 789.90,
+    releaseDate: new Date(2018, 4, 20)
+  };
 
   // Logic for calling a HTTP Service for data
   // difficult to write unit test
