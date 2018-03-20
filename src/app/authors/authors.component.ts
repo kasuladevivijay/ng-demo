@@ -11,6 +11,7 @@ export class AuthorsComponent {
   isActive = false;
 
   emails = 'me@example.com';
+  text = 'remaiontaining Lorem Ipsum passages, and morith desktop publishing software like Aldupsum publishing software like Aldupsum.';
   constructor(service: AuthorsService) {
     this.authors = service.getAuthors();
   }

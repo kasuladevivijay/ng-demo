@@ -19,3 +19,6 @@
 <!-- Two Way binding -->
 <!-- Using [(ngModel)] directive -->
 <input type="email" [(ngModel)]="emails" (keyup.enter)="keyUp()" />
+
+<h2>Summary: </h2>
+{{ text | summary:35 }}
