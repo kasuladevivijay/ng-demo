@@ -10,7 +10,7 @@ export class AuthorsComponent {
   authors;
   isActive = false;
 
-  email = 'me@example.com';
+  emails = 'me@example.com';
   constructor(service: AuthorsService) {
     this.authors = service.getAuthors();
   }
@@ -35,7 +35,7 @@ export class AuthorsComponent {
 
   }
   keyUp() {
-    console.log(this.email);
+    console.log(this.emails);
   }
 
 }
