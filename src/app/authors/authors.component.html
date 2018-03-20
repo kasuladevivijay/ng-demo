@@ -11,3 +11,6 @@
   <!-- Event Bubbling - events bubbles up on the DOM tree -->
   <button class="btn btn-secondary" (click)="onClick($event)">Save Author</button>
 </div>
+<hr>
+<!-- event filtering in angular using . operator  -->
+<input type="text" (keyup.enter)="onKeyUp()"/>
