@@ -13,4 +13,5 @@
 </div>
 <hr>
 <!-- event filtering in angular using . operator  -->
-<input type="text" (keyup.enter)="onKeyUp()"/>
+<!-- Template Variables ex #email -->
+<input type="email" #email (keyup.enter)="onKeyUp(email.value)"/>

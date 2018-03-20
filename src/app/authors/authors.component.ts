@@ -21,14 +21,16 @@ export class AuthorsComponent {
     console.log('Div was clicked');
   }
   // event filtering
-  onKeyUp() {
+  onKeyUp(email) {
     /** natively we have a event object
      * if($event.keyCode === 13){
      * console.log('Enter was pressed');
      *  }
      */
     // But in angular we don't need the above logic, we can use . operator
-    console.log('Enter was pressed');
+    // console.log('Enter was pressed');
+    console.log(email);
+
   }
 
 }
