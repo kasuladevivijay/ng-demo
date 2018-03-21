@@ -1,3 +1,4 @@
 <span class="glyphicon"
-      [ngClass]=" isClicked ? 'glyphicon-star' : 'glyphicon-star-empty' "
-      (click)="toggleLike()"></span>
+      [ngClass]=" isLiked ? 'glyphicon-star' : 'glyphicon-star-empty' "
+      (click)="toggleLike()"></span><br>
+<img [src]="imageURL" alt="sample_image">

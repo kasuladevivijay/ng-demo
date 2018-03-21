@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-like',
@@ -6,15 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./like.component.css']
 })
 export class LikeComponent implements OnInit {
+  // Input Properties and aliasing
+  // tslint:disable-next-line:no-input-rename
+  @Input('is-liked') isLiked: boolean;
 
-  isClicked = false;
+  imageURL = 'http://lorempixel.com/400/200/sports';
   constructor() { }
 
   ngOnInit() {
   }
 
   toggleLike() {
-    this.isClicked = !this.isClicked;
+    this.isLiked = !this.isLiked;
   }
 
 }
