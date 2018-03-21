@@ -13,6 +13,7 @@
   </div>
   <div class="body">
     <!-- ngIf with then and else -->
+    <!-- For large DOM trees use *ngIf -->
       <div *ngIf="courses.length>0; then coursesList else noCourses"></div>
       <ng-template #coursesList>
          Courses exist! :)
@@ -21,6 +22,15 @@
         <!-- Using the template variable noCourses for else case -->
         No Courses exist!
       </ng-template>
+
+      <!-- Hidden property approach -->
+      <!-- For short DOM trees use the [hidden] property approach -->
+      <div [hidden]="courses.length == 0">
+        Courses Exist 1111
+      </div>
+      <div [hidden]="courses.length > 0">
+        No Couses Exist 0000
+      </div>
   </div>
 </app-panel>
 <app-courses></app-courses>
