@@ -12,9 +12,11 @@
       <h2>App courses</h2>
   </div>
   <div class="body">
-      <div *ngIf="courses.length>0 else noCourses">
-        Courses exist! :)
-      </div>
+    <!-- ngIf with then and else -->
+      <div *ngIf="courses.length>0; then coursesList else noCourses"></div>
+      <ng-template #coursesList>
+         Courses exist! :)
+      </ng-template>
       <ng-template #noCourses>
         <!-- Using the template variable noCourses for else case -->
         No Courses exist!
