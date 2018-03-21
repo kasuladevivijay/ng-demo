@@ -1,0 +1,13 @@
+
+<ul class="nav nav-pills">
+  <!-- class binding and event binding -->
+  <li [class.active]="viewMode == 'map'"><a (click)="viewMode = 'map'">Map View</a></li>
+    <li [class.active]="viewMode == 'list'"><a (click)="viewMode = 'list'">List View</a></li>
+</ul>
+  <!-- use [ngSwitch] property binding -->
+<div [ngSwitch]="viewMode">
+  <!-- then use the  *ngSwitchCase to render different views-->
+  <div *ngSwitchCase="'map'">Map Content</div>
+  <div *ngSwitchCase="'list'">List Content</div>
+  <div *ngSwitchDefault>Otherwise</div>
+</div>

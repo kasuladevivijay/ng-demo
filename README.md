@@ -28,9 +28,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Directives
 
-There are basically two types of Directives 
+There are basically two types of Directives
 
-- Structural : modify the structure of the DOM
+- Structural : modify the structure of the DOM, (*) will be used before the directive to identify the structural directives ex *ngIf
 
 - Attribute : modify the attribute of the DOM elements
 

@@ -12,6 +12,7 @@ import { AuthorsService } from './authors/authors.service';
 import { SummaryPipe } from './summary.pipe';
 import { LikeComponent } from './like/like.component';
 import { PanelComponent } from './panel/panel.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PanelComponent } from './panel/panel.component';
     AuthorsComponent,
     SummaryPipe,
     LikeComponent,
-    PanelComponent
+    PanelComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
