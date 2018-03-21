@@ -10,4 +10,8 @@ export class AppComponent {
   post = {
     isLiked: true
   };
+
+  isChanged() {
+    console.log('is Changed!');
+  }
 }

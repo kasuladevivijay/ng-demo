@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-like',
@@ -10,6 +10,10 @@ export class LikeComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('is-liked') isLiked: boolean;
 
+  // Output properties
+  // Initialize with an instace of EventEmitter
+  @Output() change = new EventEmitter();
+
   imageURL = 'http://lorempixel.com/400/200/sports';
   constructor() { }
 
@@ -18,6 +22,8 @@ export class LikeComponent implements OnInit {
 
   toggleLike() {
     this.isLiked = !this.isLiked;
+    // emit the custom event
+    this.change.emit();
   }
 
 }
