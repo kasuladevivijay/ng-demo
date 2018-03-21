@@ -11,6 +11,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './authors/authors.service';
 import { SummaryPipe } from './summary.pipe';
 import { LikeComponent } from './like/like.component';
+import { PanelComponent } from './panel/panel.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LikeComponent } from './like/like.component';
     CoursesComponent,
     AuthorsComponent,
     SummaryPipe,
-    LikeComponent
+    LikeComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
