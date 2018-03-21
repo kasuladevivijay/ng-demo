@@ -23,7 +23,15 @@ export class LikeComponent implements OnInit {
   toggleLike() {
     this.isLiked = !this.isLiked;
     // emit the custom event
-    this.change.emit();
+    // can pass event data and that will be received by all event subscribers like (app.component)
+    // this.change.emit(this.isLiked);
+    // We can pass objects too
+    this.change.emit({ newValue: this.isLiked});
   }
 
+}
+
+// Create a interface to pass event data and then export
+export interface IsChangedValues {
+  newValue: boolean;
 }

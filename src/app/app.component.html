@@ -7,7 +7,7 @@
 </div>
 <h2>App courses</h2>
 
-<app-like [is-liked]="post.isLiked" (change)="isChanged()"></app-like>
+<app-like [is-liked]="post.isLiked" (change)="isChanged($event)"></app-like>
 <hr>
 <app-courses></app-courses>
 <hr>
