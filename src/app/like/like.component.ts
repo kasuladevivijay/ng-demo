@@ -12,7 +12,9 @@ export class LikeComponent implements OnInit {
 
   // Output properties
   // Initialize with an instace of EventEmitter
-  @Output() change = new EventEmitter();
+  // Aliasing Output properties when we change any output property names
+  // tslint:disable-next-line:no-output-rename
+  @Output('change') click = new EventEmitter();
 
   imageURL = 'http://lorempixel.com/400/200/sports';
   constructor() { }
@@ -26,7 +28,7 @@ export class LikeComponent implements OnInit {
     // can pass event data and that will be received by all event subscribers like (app.component)
     // this.change.emit(this.isLiked);
     // We can pass objects too
-    this.change.emit({ newValue: this.isLiked});
+    this.click.emit({ newValue: this.isLiked});
   }
 
 }
