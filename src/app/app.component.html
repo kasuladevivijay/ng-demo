@@ -12,9 +12,16 @@
       <h2>App courses</h2>
   </div>
   <div class="body">
-      <app-courses></app-courses>
+      <div *ngIf="courses.length>0 else noCourses">
+        Courses exist! :)
+      </div>
+      <ng-template #noCourses>
+        <!-- Using the template variable noCourses for else case -->
+        No Courses exist!
+      </ng-template>
   </div>
 </app-panel>
+<app-courses></app-courses>
 <hr>
 <app-like [is-liked]="post.isLiked" (change)="isChanged($event)"></app-like>
 <span class="glyphicon glyphicon-heart"></span>

@@ -20,6 +20,8 @@ export class AppComponent {
     isLiked: true
   };
 
+  courses = [];
+
   isChanged(isLiked: IsChangedValues) {
     console.log('is Changed!', isLiked);
   }
