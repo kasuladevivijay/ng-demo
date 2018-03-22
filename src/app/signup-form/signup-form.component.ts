@@ -22,6 +22,20 @@ export class SignupFormComponent {
     ])
   });
 
+  login(){
+    /*
+    when connected to DB
+    const isValid: boolean = authService.login(this.form.value);
+    if (!isValid) {
+      this.form.setErrors({
+        inValidLogin: true
+      });
+    } */
+    this.form.setErrors({
+      inValidLogin: true
+    });
+  }
+
   get username() {
     return this.form.get('username');
   }
