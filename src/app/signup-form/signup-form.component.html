@@ -6,6 +6,8 @@
       <div class="form-group" [ngClass]="username.touched && username.invalid ? 'has-error' : 'has-success'">
         <label for="username">Username</label>
         <input formControlName="username" type="text" id="username" class="form-control">
+        <!-- showing Loader text/images using pending key of formControl -->
+        <div *ngIf="username.pending">Checking for available usernames...</div>
         <div class="help-block" *ngIf="username.touched && username.invalid">
           <!-- Adding Specific Validations -->
           <div *ngIf="username.errors.required">Username is required.</div>
