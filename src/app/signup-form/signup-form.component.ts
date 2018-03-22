@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -7,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent {
-
+  form = new FormGroup({
+    username: new FormControl(),
+    password: new FormControl()
+  });
 }
