@@ -1,7 +1,15 @@
 <div class="panel panel-primary">
   <div class="panel-heading">Posts Titles</div>
   <div class="panel-body">
-    <!-- Content -->
+    <!-- POST Data -->
+    <h3>Add Post</h3>
+    <input
+        (keyup.enter)="createPost(title)"
+        #title
+        type="text"
+        class="form-control">
+    <hr>
+    <!-- GET Data -->
     <ul class="list-group">
       <li *ngFor="let post of posts" class="list-group-item">
         {{ post.title }}

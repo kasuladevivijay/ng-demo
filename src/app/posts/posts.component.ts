@@ -9,11 +9,29 @@ import { Http } from '@angular/http';
 export class PostsComponent {
 
   posts = [];
-  constructor(http: Http) {
+  private url = 'http://jsonplaceholder.typicode.com/posts';
+  constructor(private http: Http) {
+    // made http private for other methods to access it
     // get method
-    http.get('http://jsonplaceholder.typicode.com/posts')
+    http.get(this.url)
         .subscribe((response) => {
           this.posts = response.json();
         });
   }
+
+  createPost(input: HTMLInputElement) {
+    const post = {title: input.value};
+    // clear the field after data entered
+    input.value = '';
+    // post method
+    this.http.post(this.url, JSON.stringify(post))
+        .subscribe(response => {
+          post['id'] = response.json().id;
+          // push the added post to the Posts array
+          // push will add it to end of the array where as
+          // splice will add to the index mentioned in the first param
+          this.posts.splice(0, 0, post);
+        });
+  }
+
 }
