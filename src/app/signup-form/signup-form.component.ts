@@ -10,19 +10,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    // multiple validators
-    // Added asynchronous validators as third parameter
-    username: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      UsernameValidators.cannotContainSpace
-    ], UsernameValidators.shouldBeUnique),
-    password: new FormControl('', [
-      Validators.required, Validators.minLength(5)
-    ])
+    // Nested FormGroups
+    account: new FormGroup({
+        // multiple validators
+        // Added asynchronous validators as third parameter
+      username: new FormControl('', [
+       Validators.required,
+        Validators.minLength(3),
+        UsernameValidators.cannotContainSpace
+      ], UsernameValidators.shouldBeUnique),
+      password: new FormControl('', [
+       Validators.required, Validators.minLength(5)
+      ])
+    })
   });
 
-  login(){
+  login() {
     /*
     when connected to DB
     const isValid: boolean = authService.login(this.form.value);
@@ -37,10 +40,10 @@ export class SignupFormComponent {
   }
 
   get username() {
-    return this.form.get('username');
+    return this.form.get('account.username');
   }
 
   get password() {
-    return this.form.get('password');
+    return this.form.get('account.password');
   }
 }
