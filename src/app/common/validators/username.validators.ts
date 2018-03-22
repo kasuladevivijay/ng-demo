@@ -12,4 +12,17 @@ export class UsernameValidators {
     }
     return null;
   }
+  // Asynchronous Validator with Promises
+
+  static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'vijay') {
+          resolve ({shouldBeUnique: true});
+        } else {
+          resolve (null);
+        }
+      }, 2000);
+    });
+  }
 }
