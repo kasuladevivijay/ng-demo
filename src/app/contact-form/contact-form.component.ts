@@ -12,4 +12,8 @@ export class ContactFormComponent {
     // ngModel Object will be rendered
     console.log(x);
   }
+
+  submit(f) {
+    console.log(JSON.stringify(f.value));
+  }
 }

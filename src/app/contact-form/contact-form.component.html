@@ -2,35 +2,25 @@
 <div class="panel panel-info">
   <div class="panel-heading">Contact Form</div>
   <div class="panel-body">
-      <form action="">
-          <div class="form-group" [class.has-error]="firstName.touched && firstName.control.invalid">
-            <label for="firstName">First Name</label>
-            <!-- Using ngModel template driven approach
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+      <div class="form-group" [class.has-error]="firstName.touched && firstName.control.invalid">
+        <label for="firstName">First Name</label>
+        <!-- Using ngModel template driven approach
             a new FormControl object is created for the field -->
-            <input ngModel
-                   required
-                   minlength="3"
-                   maxlength="10"
-                   pattern="/[a-z]{3,10}/"
-                   name="firstName"
-                   #firstName="ngModel"
-                   (change)="log(firstName)"
-                   type="text" id="firstName" class="form-control">
-            <div class="help-block" *ngIf="firstName.touched && firstName.control.invalid">
-              <!-- multiple validations -->
-              <div *ngIf="firstName.errors.required">FirstName should be required</div>
-              <div *ngIf="firstName.errors.minlength">FirstName should have min {{ firstName.errors.minlength.requiredLength}} chars</div>
-              <div *ngIf="firstName.errors.pattern">FirstName doesn't match the pattern</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="comment">Comment</label>
-            <textarea ngModel
-                     name="comment"
-                     id="comment"
-                     cols="30" rows="10" class="form-control"></textarea>
-          </div>
-          <button class="btn btn-primary">Submit</button>
-        </form>
+        <input ngModel required minlength="3" maxlength="10" pattern="/[a-z]{3,10}/" name="firstName" #firstName="ngModel" (change)="log(firstName)"
+          type="text" id="firstName" class="form-control">
+        <div class="help-block" *ngIf="firstName.touched && firstName.control.invalid">
+          <!-- multiple validations -->
+          <div *ngIf="firstName.errors.required">FirstName should be required</div>
+          <div *ngIf="firstName.errors.minlength">FirstName should have min {{ firstName.errors.minlength.requiredLength}} chars</div>
+          <div *ngIf="firstName.errors.pattern">FirstName doesn't match the pattern</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea ngModel name="comment" id="comment" cols="30" rows="10" class="form-control"></textarea>
+      </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
   </div>
 </div>
