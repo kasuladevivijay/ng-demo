@@ -44,6 +44,13 @@
           </option>
         </select>
       </div>
+      <!-- radio buttons -->
+      <div class="radio" *ngFor="let method of contactMethods">
+        <label>
+          <input type="radio" name='contactMethod' ngModel [value]="method.id">
+          {{method.name}}
+        </label>
+      </div>
       <p>
         {{ form.value | json }}
       </p>
