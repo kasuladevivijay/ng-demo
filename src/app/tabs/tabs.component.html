@@ -15,11 +15,13 @@
 
 <!-- *ngFor with exported values of ngForOf directive -->
 <h4>Students</h4>
+<button class="btn btn-primary" (click)="add()">Add Student</button><hr>
 <ul class="list-group">
   <!-- for localvariables of ngForOf goto https://angular.io/api/common/NgForOf
     index is number, [first, last, even, odd] are boolean
   -->
   <li class="list-group-item" *ngFor="let student of students; index as i; even as isEven">
     {{i}} . {{ student.name }} <span *ngIf="isEven">-Even</span>
+    <button class="btn btn-danger" (click)="remove(student)" >Remove</button>
   </li>
 </ul>
