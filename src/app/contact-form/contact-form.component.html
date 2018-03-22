@@ -34,6 +34,16 @@
           </label>
         </div>
       </div>
+      <!-- dropdown list -->
+      <div class="form-group">
+        <label for="contactMethods">Contact Methods</label>
+        <select multiple ngModel name="contactMethods" id="contactMethods" class="form-control">
+          <option *ngFor="let method of contactMethods" [value]="method.id">
+            <!-- use [ngValue]="method" if you want to send the actual object to the server -->
+            {{method.name}}
+          </option>
+        </select>
+      </div>
       <p>
         {{ form.value | json }}
       </p>
