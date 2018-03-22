@@ -16,6 +16,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { CourseFormComponent } from './course-form/course-form.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     TabsComponent,
     InputFormatDirective,
     ContactFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    CourseFormComponent
   ],
   imports: [
     BrowserModule,
