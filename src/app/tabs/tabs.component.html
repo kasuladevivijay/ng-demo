@@ -1,10 +1,13 @@
-
 <ul class="nav nav-pills">
   <!-- class binding and event binding -->
-  <li [class.active]="viewMode == 'map'"><a (click)="viewMode = 'map'">Map View</a></li>
-    <li [class.active]="viewMode == 'list'"><a (click)="viewMode = 'list'">List View</a></li>
+  <li [class.active]="viewMode == 'map'">
+    <a (click)="viewMode = 'map'">Map View</a>
+  </li>
+  <li [class.active]="viewMode == 'list'">
+    <a (click)="viewMode = 'list'">List View</a>
+  </li>
 </ul>
-  <!-- use [ngSwitch] property binding -->
+<!-- use [ngSwitch] property binding -->
 <div [ngSwitch]="viewMode">
   <!-- then use the  *ngSwitchCase to render different views-->
   <div *ngSwitchCase="'map'">Map Content</div>
@@ -15,19 +18,22 @@
 
 <!-- *ngFor with exported values of ngForOf directive -->
 <h4>Students</h4>
-<button class="btn btn-primary" (click)="add()">Add Student</button><hr>
+<button class="btn btn-primary" (click)="add()">Add Student</button>
+<hr>
 <ul class="list-group">
   <!-- for localvariables of ngForOf goto https://angular.io/api/common/NgForOf
     index is number, [first, last, even, odd] are boolean
   -->
   <li class="list-group-item" *ngFor="let student of students; index as i; even as isEven">
-    {{i}} . {{ student.name }} <span *ngIf="isEven">-Even</span>
-    <button class="btn btn-danger" (click)="remove(student)" >Remove</button>
+    {{i}} . {{ student.name }}
+    <span *ngIf="isEven">-Even</span>
+    <button class="btn btn-danger" (click)="remove(student)">Remove</button>
   </li>
 </ul>
 <hr>
 <h4>Courses</h4>
-<button class="btn btn-primary" (click)="loadCourses()">Load Courses</button><hr>
+<button class="btn btn-primary" (click)="loadCourses()">Load Courses</button>
+<hr>
 <ul class="list-group">
   <!-- using 'trackBy' for better performance while rendering large lists of data  -->
   <li class="list-group-item" *ngFor="let course of courses; trackBy: trackCourses">
@@ -35,9 +41,20 @@
   </li>
 </ul>
 <!-- [ngStyle] -->
-<button
-  [ngStyle]="{
+<button [ngStyle]="{
     'background-color': canSave ? 'red' : 'green',
     'color': canSave ? 'white' : 'black'
-  }"
->Save</button>
+  }">Save</button> <hr>
+<!-- Custom Directive Use -->
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputText" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text"
+             class="form-control"
+             id="inputText"
+             placeholder="Name"
+             [appInputFormat]="'uppercase'">
+    </div>
+  </div>
+</form>

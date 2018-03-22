@@ -13,6 +13,7 @@ import { SummaryPipe } from './summary.pipe';
 import { LikeComponent } from './like/like.component';
 import { PanelComponent } from './panel/panel.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { InputFormatDirective } from './input-format.directive';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TabsComponent } from './tabs/tabs.component';
     SummaryPipe,
     LikeComponent,
     PanelComponent,
-    TabsComponent
+    TabsComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,
