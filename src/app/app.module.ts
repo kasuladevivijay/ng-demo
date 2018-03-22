@@ -15,6 +15,7 @@ import { PanelComponent } from './panel/panel.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     PanelComponent,
     TabsComponent,
     InputFormatDirective,
-    ContactFormComponent
+    ContactFormComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
