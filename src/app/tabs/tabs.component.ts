@@ -13,6 +13,7 @@ export class TabsComponent {
     {id: 3, name: 'Diana'},
   ];
   courses;
+  canSave = false;
 
   // ngFor looks for change detection when the below functions or events are called
   // add student

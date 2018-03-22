@@ -34,3 +34,10 @@
     {{ course.name }}
   </li>
 </ul>
+<!-- [ngStyle] -->
+<button
+  [ngStyle]="{
+    'background-color': canSave ? 'red' : 'green',
+    'color': canSave ? 'white' : 'black'
+  }"
+>Save</button>
