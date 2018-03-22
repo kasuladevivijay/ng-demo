@@ -25,3 +25,12 @@
     <button class="btn btn-danger" (click)="remove(student)" >Remove</button>
   </li>
 </ul>
+<hr>
+<h4>Courses</h4>
+<button class="btn btn-primary" (click)="loadCourses()">Load Courses</button><hr>
+<ul class="list-group">
+  <!-- using 'trackBy' for better performance while rendering large lists of data  -->
+  <li class="list-group-item" *ngFor="let course of courses; trackBy: trackCourses">
+    {{ course.name }}
+  </li>
+</ul>
