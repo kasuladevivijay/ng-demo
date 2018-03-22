@@ -7,4 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent {
   viewMode = 'map';
+  students = [
+    {id: 1, name: 'Bruce'},
+    {id: 2, name: 'Clark'},
+    {id: 3, name: 'Diana'},
+  ];
 }
