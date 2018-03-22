@@ -10,6 +10,8 @@
           <!-- Adding Specific Validations -->
           <div *ngIf="username.errors.required">Username is required.</div>
           <div *ngIf="username.errors.minlength">Username should have min {{username.errors.minlength.requiredLength}} chars.</div>
+          <!-- Using Custom Validator -->
+          <div *ngIf="username.errors.cannotContainSpace">Username shouldn't have spaces.</div>
         </div>
       </div>
       <div class="form-group" [class.hasError]="password.touched && password.invalid">
