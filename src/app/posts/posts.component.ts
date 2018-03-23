@@ -45,4 +45,14 @@ export class PostsComponent {
         });
   }
 
+  // Delete Method
+  deletePost(post) {
+    this.http.delete(this.url + '/' + post.id)
+        .subscribe(response => {
+          // find the index of the selected post
+          const index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+        });
+  }
+
 }
