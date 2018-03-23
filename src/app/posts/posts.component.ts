@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
@@ -6,17 +6,22 @@ import { Http } from '@angular/http';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
 
   posts = [];
   private url = 'http://jsonplaceholder.typicode.com/posts';
   constructor(private http: Http) {
     // made http private for other methods to access it
+  }
+
+  // Initialization should be done in ngOnInit method as
+  // calling a get request method in constrctor would be costly
+  ngOnInit() {
     // get method
-    http.get(this.url)
-        .subscribe((response) => {
-          this.posts = response.json();
-        });
+    this.http.get(this.url)
+      .subscribe((response) => {
+        this.posts = response.json();
+      });
   }
 
   createPost(input: HTMLInputElement) {
