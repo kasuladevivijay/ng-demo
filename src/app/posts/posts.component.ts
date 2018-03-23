@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class PostsComponent implements OnInit {
 
   posts = [];
+  err;
   constructor(private service: PostService) {
     // separation of concerns , calling the service instead of Http Class
   }
@@ -20,6 +21,8 @@ export class PostsComponent implements OnInit {
       this.service.getPosts()
       .subscribe((response) => {
         this.posts = response.json();
+      }, error => {
+        this.err = 'An Unexpected error occured while retrieving data';
       });
   }
 
@@ -35,6 +38,8 @@ export class PostsComponent implements OnInit {
           // push will add it to end of the array where as
           // splice will add to the index mentioned in the first param
           this.posts.splice(0, 0, post);
+        }, error => {
+          this.err = 'Unexpected error occured while posting data';
         });
   }
 
@@ -47,6 +52,8 @@ export class PostsComponent implements OnInit {
     this.service.updatePost(post)
         .subscribe(response => {
           console.log(response.json());
+        }, error => {
+          this.err = 'Unexpected error occured while updating data';
         });
   }
 
@@ -57,6 +64,8 @@ export class PostsComponent implements OnInit {
           // find the index of the selected post
           const index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
+        }, error => {
+          this.err = 'Unexpected error occured while deleting data';
         });
   }
 

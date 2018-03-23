@@ -3,6 +3,9 @@
   <div class="panel-body">
     <!-- POST Data -->
     <h3>Add Post</h3>
+    <div [hidden]="!err" class="alert alert-danger">
+      {{ err }}
+    </div>
     <input
         (keyup.enter)="createPost(title)"
         #title
