@@ -34,4 +34,15 @@ export class PostsComponent {
         });
   }
 
+  // Update method
+  updatePost(post) {
+    // using patch: if we want to update some properties in the object(improves performance)
+    // using put: if we want to update the entire object
+    // this.http.put(this.url, JSON.stringify(post))
+    this.http.patch(this.url + '/' + post.id, JSON.stringify({isRead: true}))
+        .subscribe(response => {
+          console.log(response.json());
+        });
+  }
+
 }

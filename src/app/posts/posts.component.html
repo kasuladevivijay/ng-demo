@@ -12,6 +12,8 @@
     <!-- GET Data -->
     <ul class="list-group">
       <li *ngFor="let post of posts" class="list-group-item">
+        <!-- Update post -->
+        <button (click)="updatePost(post)" class="btn btn-default btn-sm">Update</button>
         {{ post.title }}
       </li>
     </ul>
