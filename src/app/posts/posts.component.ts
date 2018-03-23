@@ -24,8 +24,6 @@ export class PostsComponent implements OnInit {
       this.service.getPosts()
       .subscribe((response) => {
         this.posts = response.json();
-      }, error => {
-        this.err = 'An Unexpected error occured while retrieving data';
       });
   }
 
@@ -44,8 +42,9 @@ export class PostsComponent implements OnInit {
         }, (error: AppError) => {
           if (error instanceof BadRequestError) {
             // this.form.setErrors(error.originalError);
+          } else {
+            throw error;
           }
-          this.err = 'Unexpected error occured while posting data';
         });
   }
 
@@ -58,8 +57,6 @@ export class PostsComponent implements OnInit {
     this.service.updatePost(post)
         .subscribe(response => {
           console.log(response.json());
-        }, error => {
-          this.err = 'Unexpected error occured while updating data';
         });
   }
 
@@ -74,7 +71,7 @@ export class PostsComponent implements OnInit {
           if (error instanceof NotFoundError) {
             this.err = 'This post has already been deleted';
           } else {
-            this.err = 'Unexpected error occured while deleting data';
+            throw error;
           }
         });
   }
