@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
   // calling a get request method in constrctor would be costly
   ngOnInit() {
     // get method from the service
-      this.service.getPosts()
+      this.service.getAll()
       .subscribe((response) => {
         this.posts = response.json();
       });
@@ -32,7 +32,7 @@ export class PostsComponent implements OnInit {
     // clear the field after data entered
     input.value = '';
     // post method from the service
-    this.service.createPost(post)
+    this.service.create(post)
         .subscribe(response => {
           post['id'] = response.json().id;
           // push the added post to the Posts array
@@ -54,7 +54,7 @@ export class PostsComponent implements OnInit {
     // using put: if we want to update the entire object
     // this.http.put(this.url, JSON.stringify(post))
     // from service
-    this.service.updatePost(post)
+    this.service.update(post)
         .subscribe(response => {
           console.log(response.json());
         });
@@ -62,7 +62,7 @@ export class PostsComponent implements OnInit {
 
   // Delete Method
   deletePost(post) {
-    this.service.deletePost(post.id)
+    this.service.delete(post.id)
         .subscribe(response => {
           // find the index of the selected post
           const index = this.posts.indexOf(post);
