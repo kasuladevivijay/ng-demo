@@ -16,34 +16,38 @@ export class PostService {
    }
 
    getPosts() {
-      return this.http.get(this.url);
+      return this.http.get(this.url)
+      .catch(this.handleError);
    }
 
    createPost(post) {
       return this.http.post(this.url, JSON.stringify(post))
-        .catch((error: Response) => {
-          if (error.status === 400) {
-            return Observable.throw(new BadRequestError(error.json()));
-          } else {
-            return Observable.throw(new AppError(error.json()));
-          }
-        });
+        .catch(this.handleError);
    }
 
    updatePost(post) {
-     return this.http.patch(this.url + '/' + post.id, JSON.stringify({isRead: true}));
+     return this.http.patch(this.url + '/' + post.id, JSON.stringify({isRead: true}))
+        .catch(this.handleError);
    }
 
    deletePost(id) {
-     return this.http.delete(this.url + '/' + id)
-                .catch((error: Response) => {
-                  if (error.status === 404) {
-                    // more specific error
-                    Observable.throw(new NotFoundError(error.json()));
-                  }
-                  // returning the different type of error which is Application specific
-                  return Observable.throw(new AppError(error));
-                });
+    return this.http.delete(this.url + '/' + id)
+      .catch(this.handleError);
    }
+
+  //  Reusable Error handler method
+
+  private handleError(error: Response) {
+    if (error.status === 404) {
+      // more specific error
+      return Observable.throw(new NotFoundError(error.json()));
+    }
+    if (error.status === 400) {
+      // Bad Input Request
+      return Observable.throw(new BadRequestError(error.json()));
+    }
+    // returning the different type of error which is Application specific
+    return Observable.throw(new AppError(error));
+  }
 
 }
