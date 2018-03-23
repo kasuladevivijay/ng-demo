@@ -19,6 +19,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PostsComponent } from './posts/posts.component';
   ],
   providers: [
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })

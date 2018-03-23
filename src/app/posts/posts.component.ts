@@ -1,5 +1,5 @@
+import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-posts',
@@ -9,16 +9,15 @@ import { Http } from '@angular/http';
 export class PostsComponent implements OnInit {
 
   posts = [];
-  private url = 'http://jsonplaceholder.typicode.com/posts';
-  constructor(private http: Http) {
-    // made http private for other methods to access it
+  constructor(private service: PostService) {
+    // separation of concerns , calling the service instead of Http Class
   }
 
   // Initialization should be done in ngOnInit method as
   // calling a get request method in constrctor would be costly
   ngOnInit() {
-    // get method
-    this.http.get(this.url)
+    // get method from the service
+      this.service.getPosts()
       .subscribe((response) => {
         this.posts = response.json();
       });
@@ -28,8 +27,8 @@ export class PostsComponent implements OnInit {
     const post = {title: input.value};
     // clear the field after data entered
     input.value = '';
-    // post method
-    this.http.post(this.url, JSON.stringify(post))
+    // post method from the service
+    this.service.createPost(post)
         .subscribe(response => {
           post['id'] = response.json().id;
           // push the added post to the Posts array
@@ -44,7 +43,8 @@ export class PostsComponent implements OnInit {
     // using patch: if we want to update some properties in the object(improves performance)
     // using put: if we want to update the entire object
     // this.http.put(this.url, JSON.stringify(post))
-    this.http.patch(this.url + '/' + post.id, JSON.stringify({isRead: true}))
+    // from service
+    this.service.updatePost(post)
         .subscribe(response => {
           console.log(response.json());
         });
@@ -52,7 +52,7 @@ export class PostsComponent implements OnInit {
 
   // Delete Method
   deletePost(post) {
-    this.http.delete(this.url + '/' + post.id)
+    this.service.deletePost(post)
         .subscribe(response => {
           // find the index of the selected post
           const index = this.posts.indexOf(post);
