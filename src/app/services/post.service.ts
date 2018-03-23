@@ -1,5 +1,10 @@
+import { BadRequestError } from './../common/bad-request-error';
+import { AppError } from './../common/app-error';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/catch';
+import { Observable} from 'rxjs/Observable';
+import { NotFoundError } from '../common/not-found-error';
 
 @Injectable()
 export class PostService {
@@ -14,7 +19,14 @@ export class PostService {
    }
 
    createPost(post) {
-      return this.http.post(this.url, JSON.stringify(post));
+      return this.http.post(this.url, JSON.stringify(post))
+        .catch((error: Response) => {
+          if (error.status === 400) {
+            return Observable.throw(new BadRequestError(error.json()));
+          } else {
+            return Observable.throw(new AppError(error.json()));
+          }
+        });
    }
 
    updatePost(post) {
@@ -22,7 +34,15 @@ export class PostService {
    }
 
    deletePost(post) {
-     return this.http.delete(this.url + '/' + post.id);
+     return this.http.delete(this.url + '/' + post.id)
+                .catch((error: Response) => {
+                  if (error.status === 404) {
+                    // more specific error
+                    Observable.throw(new NotFoundError(error));
+                  }
+                  // returning the different type of error which is Application specific
+                  return Observable.throw(new AppError(error));
+                });
    }
 
 }

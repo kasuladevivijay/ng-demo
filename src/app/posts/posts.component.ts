@@ -1,5 +1,8 @@
+import { BadRequestError } from './../common/bad-request-error';
+import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
+import { NotFoundError } from '../common/not-found-error';
 
 @Component({
   selector: 'app-posts',
@@ -38,7 +41,10 @@ export class PostsComponent implements OnInit {
           // push will add it to end of the array where as
           // splice will add to the index mentioned in the first param
           this.posts.splice(0, 0, post);
-        }, error => {
+        }, (error: AppError) => {
+          if (error instanceof BadRequestError) {
+            // this.form.setErrors(error.originalError);
+          }
           this.err = 'Unexpected error occured while posting data';
         });
   }
@@ -64,8 +70,12 @@ export class PostsComponent implements OnInit {
           // find the index of the selected post
           const index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
-        }, error => {
-          this.err = 'Unexpected error occured while deleting data';
+        }, (error: AppError) => {
+          if (error instanceof NotFoundError) {
+            this.err = 'This post has already been deleted';
+          } else {
+            this.err = 'Unexpected error occured while deleting data';
+          }
         });
   }
 
