@@ -2,7 +2,7 @@
 
 export class AppError {
 
-  constructor(public originalError: any) {
+  constructor(public originalError?: any) {
 
   }
 }

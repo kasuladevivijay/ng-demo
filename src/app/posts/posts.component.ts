@@ -27,6 +27,9 @@ export class PostsComponent implements OnInit {
 
   createPost(input: HTMLInputElement) {
     const post = {title: input.value};
+    // Optimistic updates
+    this.posts.splice(0, 0, post);
+
     // clear the field after data entered
     input.value = '';
     // post method from the service
@@ -36,8 +39,11 @@ export class PostsComponent implements OnInit {
           // push the added post to the Posts array
           // push will add it to end of the array where as
           // splice will add to the index mentioned in the first param
-          this.posts.splice(0, 0, post);
+          // this.posts.splice(0, 0, post);
         }, (error: AppError) => {
+          // rollback in case of any error
+          this.posts.splice(0, 1);
+
           if (error instanceof BadRequestError) {
             // this.form.setErrors(error.originalError);
           } else {
@@ -59,12 +65,18 @@ export class PostsComponent implements OnInit {
 
   // Delete Method
   deletePost(post) {
+    // find the index of the selected post
+    const index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+
     this.service.delete(post.id)
-        .subscribe(() => {
-          // find the index of the selected post
-          const index = this.posts.indexOf(post);
-          this.posts.splice(index, 1);
-        }, (error: AppError) => {
+        .subscribe(
+          // null because it doesn't return any response
+          null,
+           (error: AppError) => {
+            //  rollback
+            this.posts.splice(index, 0, post);
+
           if (error instanceof NotFoundError) {
             this.err = 'This post has already been deleted';
           } else {

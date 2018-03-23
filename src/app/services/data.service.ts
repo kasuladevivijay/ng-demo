@@ -25,6 +25,8 @@ export class DataService {
    }
 
    create(resource) {
+      // to simulate the error use commented return stmt
+      // return Observable.throw(new AppError());
       return this.http.post(this.url, JSON.stringify(resource))
         .map(response => response.json())
         .catch(this.handleError);
