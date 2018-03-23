@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import { Observable} from 'rxjs/Observable';
 import { NotFoundError } from '../common/not-found-error';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class PostService {
@@ -33,12 +34,12 @@ export class PostService {
      return this.http.patch(this.url + '/' + post.id, JSON.stringify({isRead: true}));
    }
 
-   deletePost(post) {
-     return this.http.delete(this.url + '/' + post.id)
+   deletePost(id) {
+     return this.http.delete(this.url + '/' + id)
                 .catch((error: Response) => {
                   if (error.status === 404) {
                     // more specific error
-                    Observable.throw(new NotFoundError(error));
+                    Observable.throw(new NotFoundError(error.json()));
                   }
                   // returning the different type of error which is Application specific
                   return Observable.throw(new AppError(error));
