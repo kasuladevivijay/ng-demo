@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { AppErrorHandler } from './common/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +22,9 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -36,13 +40,22 @@ import { PostService } from './services/post.service';
     ContactFormComponent,
     SignupFormComponent,
     CourseFormComponent,
-    PostsComponent
+    PostsComponent,
+    HomeComponent,
+    NotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      // more specific paths should be defined first
+      {path: '', component: HomeComponent},
+      {path: 'posts', component: PostsComponent},
+      {path: '**', component: NotFoundComponent}
+    ])
   ],
   providers: [
     CoursesService,
